@@ -20,6 +20,11 @@
 | Vite | 8.3.8 | 開発用サーバーと、公開用へのまとめ（ビルド） |
 | @vitejs/plugin-react | 6.3.0 | Vite で React を使うための追加部品 |
 | oxlint | 1.93.0 | コードの書き方をチェックする（lint） |
+| Vitest | 5.1.0 | 自動テストを動かす（`npm test`） |
+| jsdom | 31.0.1 | テストの中で、ブラウザの代わりをする |
+| @testing-library/react | 16.3.3 | テストで React の画面を表示して操作する |
+| @testing-library/user-event | 14.6.10 | テストで、クリックや入力など人の操作を再現する |
+| @testing-library/jest-dom | 7.0.1 | テストの確認（「表示されている」「押せない」など）を書きやすくする |
 
 ## 開発の道具
 | 名前 | バージョン | 役割 |
