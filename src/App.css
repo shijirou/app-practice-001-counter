@@ -4,6 +4,7 @@
   gap: 1.25rem;
   max-width: 40rem;
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: 1.5rem 1rem 2rem;
 }
@@ -33,12 +34,9 @@
 
 .counter__tools {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   gap: 0.75rem;
-}
-
-.counter__tools {
-  flex-wrap: wrap;
 }
 
 .counter__field--tool {
@@ -61,6 +59,7 @@
   border: 2px solid var(--color-border);
   border-radius: 1rem;
   background: var(--color-surface);
+  container-type: inline-size;
 }
 
 .counter__label {
@@ -68,12 +67,14 @@
   font-weight: 600;
 }
 
+/* 数字の大きさ: 最大 10rem。桁数が多いときは幅に収まるよう小さくし、
+   画面が低い（タブレットの横置きなど）ときは高さに合わせて小さくする */
 .counter__number {
-  font-size: clamp(5rem, 22vw, 10rem);
+  font-size: min(10rem, 18vh, calc(100cqw / (var(--digits, 1) * 0.65)));
   font-weight: 700;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
-  word-break: break-all;
+  white-space: nowrap;
 }
 
 .button {
@@ -122,4 +123,21 @@
 .counter__field input:focus-visible {
   outline: 4px solid #f5a623;
   outline-offset: 2px;
+}
+
+/* 画面が低いとき（タブレットの横置きなど）は、余白をつめて ＋1 が画面内に収まるようにする */
+@media (max-height: 820px) {
+  .counter {
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .counter__count {
+    padding: 0.5rem 1rem;
+  }
+
+  .button--primary {
+    min-height: 5.5rem;
+  }
 }

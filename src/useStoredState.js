@@ -20,5 +20,20 @@ export function useStoredState(key, initialValue) {
     }
   }, [key, value])
 
+  // 別のタブが同じ値を変えたら、こちらにも反映する。
+  // （反映しないと、古い数量の上から足して、別タブの分が消えてしまう）
+  useEffect(() => {
+    const handleStorage = (event) => {
+      if (event.key !== null && event.key !== key) return
+      try {
+        setValue(event.newValue === null ? initialValue : JSON.parse(event.newValue))
+      } catch {
+        setValue(initialValue)
+      }
+    }
+    window.addEventListener('storage', handleStorage)
+    return () => window.removeEventListener('storage', handleStorage)
+  }, [key, initialValue])
+
   return [value, setValue]
 }
