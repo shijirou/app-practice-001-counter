@@ -81,6 +81,7 @@ function App() {
             inputMode="numeric"
             value={draft ?? String(count)}
             onChange={handleDraftChange}
+            onFocus={(event) => event.target.select()}
             onKeyDown={(event) => {
               if (event.key === 'Enter') commitDraft()
             }}
@@ -106,7 +107,10 @@ function App() {
 
       <p className="counter__count" aria-live="polite">
         <span className="counter__label">現在の数量</span>
-        <span className="counter__number">{count}</span>
+        {/* 桁数に合わせて文字の大きさを変え、数字が途中で折り返さないようにする */}
+        <span className="counter__number" style={{ '--digits': String(count).length }}>
+          {count}
+        </span>
       </p>
 
       <button type="button" className="button button--primary" onClick={increase}>
