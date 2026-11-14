@@ -31,6 +31,9 @@
 |---|---|---|
 | Git | 2.55.0 | 変更の記録 |
 | GitHub CLI（gh） | 2.100.0 | Issue・PR の作成 |
+| GitHub Actions | （サービス） | PR のたびに lint・テスト・ビルドを自動で動かす（`.github/workflows/ci.yml`） |
+| actions/checkout | v7.0.1 | Actions で、リポジトリのコードを取り出す |
+| actions/setup-node | v7.1.0 | Actions で、Node.js 24 を用意する |
 
 ## 保存
 - ブラウザの localStorage（サーバー・DB なし）。詳しくは [データ設計](data-design.md)。
