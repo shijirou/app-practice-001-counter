@@ -31,7 +31,7 @@
 - Issue を作らずに作業を始めること
 - パスワード・トークン・APIキーをコードや GitHub に載せること（`.env` に書き、`.gitignore` で除外済み）
 
-上記は `.claude/settings.json` とフック（`.claude/hooks/block-main.ps1`）でも止まるようにしている。GitHub 側でも、ルールセットで main を保護する（作ったあとに設定する）。
+上記は `.claude/settings.json` とフック（`.claude/hooks/block-main.ps1`）でも止まるようにしている。GitHub 側でも、ルールセット「main を保護する」で保護している（リポジトリ公開後に設定済み。PR 必須・CI の `check` 必須・強制プッシュと削除の禁止）。
 
 ## サーバーのポートのルール（必須）
 動作確認でサーバーを起動するときは、必ず次の決められたポートで動かす。
