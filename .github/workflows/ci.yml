@@ -1,0 +1,26 @@
+# PR を作るたび（と main に入ったとき）に、lint・テスト・ビルドを自動で動かす
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# 読み取りだけ許可する（余計な権限を持たせない）
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      # package-lock.json のとおりに入れる（版がずれない）
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
